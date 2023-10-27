@@ -16,12 +16,12 @@ struct ContentView: View {
                 SplashScreenView()
             } else {
                 NavigationView {
-
+                    MealListView()
                 }
             }
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {  // Adjust the delay as needed.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { 
                 withAnimation {
                     showSplash = false
                 }

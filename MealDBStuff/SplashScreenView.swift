@@ -19,6 +19,6 @@ struct SplashScreenView: View {
                 .font(Font.custom("Helvetica Bold", size: 18))
                 .foregroundColor(.gray)
         }
-        .background(Color.white.edgesIgnoringSafeArea(.all))  // Adjust the background color as needed.
+        .background(Color.white.edgesIgnoringSafeArea(.all))
     }
 }
