@@ -20,10 +20,11 @@ struct MealDetailView: View {
                         .font(Font.custom("Helvetica Bold", size: 28))
                         .fontWeight(.bold)
                         .padding(.horizontal)
+                        .padding(.top, 10)
                     
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Ingredients:")
-                            .font(Font.custom("Helvetica Bold", size: 18))
+                            .font(Font.custom("Helvetica Bold", size: 16))
                             .padding(.leading)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -49,7 +50,7 @@ struct MealDetailView: View {
 
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Instructions:")
-                            .font(Font.custom("Helvetica Bold", size: 18))
+                            .font(Font.custom("Helvetica Bold", size: 16))
                             .padding(.leading)
                         
                         ForEach(numberedInstructions(meal.strInstructions), id: \.self) { instruction in
