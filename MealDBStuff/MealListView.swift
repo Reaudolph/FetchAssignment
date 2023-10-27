@@ -32,7 +32,6 @@ struct MealListView: View {
                                 .cornerRadius(8)
                             Text(meal.strMeal)
                                 .font(Font.custom("Helvetica Bold", size: 12))
-                            
                                 .foregroundColor(Color.black)
                                 .multilineTextAlignment(.center)
                                 .padding(.top, 5)
@@ -41,8 +40,10 @@ struct MealListView: View {
                 }
             }
             .padding()
+            
         }
         .padding(.top)
+        .padding(.bottom, 2)
         .onAppear {
             NetworkManager.shared.fetchDessertMeals { fetchedMeals in
                 self.meals = fetchedMeals

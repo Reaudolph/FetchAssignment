@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+
 struct MealDetailView: View {
     let mealID: String
     @State private var mealDetail: MealDetail?
@@ -16,31 +17,48 @@ struct MealDetailView: View {
             VStack(spacing: 20) {
                 if let meal = mealDetail {
                     Text(meal.strMeal)
-                        .font(.title)
+                        .font(Font.custom("Helvetica Bold", size: 28))
                         .fontWeight(.bold)
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        ForEach(numberedInstructions(meal.strInstructions), id: \.self) { instruction in
-                            Text(instruction)
-                                .font(.body)
-                        }
-                    }
-                    .padding()
+                        .padding(.horizontal)
                     
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Ingredients:")
-                            .font(.headline)
-                        if let mealDetail = mealDetail {
-                            ForEach(formattedIngredients(mealDetail), id: \.self) { ingredient in
-                                Text(ingredient)
-                            }
-                        } else {
-                            Text("Meal details not available")
-                        }
+                            .font(Font.custom("Helvetica Bold", size: 18))
+                            .padding(.leading)
                         
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 10) {
+                                if let mealDetail = mealDetail {
+                                    ForEach(formattedIngredients(mealDetail), id: \.self) { ingredient in
+                                        Text(ingredient)
+                                            .font(.body)
+                                            .padding(.vertical, 5)
+                                            .padding(.horizontal, 10)
+                                            .background(Color.gray)
+                                            .cornerRadius(10)
+                                    }
+                                } else {
+                                    Text("Meal details not available")
+                                }
+                            }
+                            .padding(.leading)
+                            .padding(.trailing)
+                        }
                     }
-                    .padding()
-                    
+                    .padding(.horizontal)
+
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Instructions:")
+                            .font(Font.custom("Helvetica Bold", size: 18))
+                            .padding(.leading)
+                        
+                        ForEach(numberedInstructions(meal.strInstructions), id: \.self) { instruction in
+                            Text(instruction)
+                                .font(.body)
+                                .padding(.horizontal)
+                        }
+                    }
+                    .padding(.horizontal) 
                 } else {
                     ProgressView()
                 }
